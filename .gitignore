@@ -13,3 +13,6 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+.php_cs.php
+jwt_private.pem
+jwt_public.pem
