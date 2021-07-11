@@ -25,4 +25,5 @@ Route::post('accessToken', [TokenController::class, 'createAccessToken']);
 Route::prefix('todo')
     ->group(function () {
         Route::post('/', [TodoController::class, 'create']);
+        Route::get('/', [TodoController::class, 'search']);
     });
