@@ -28,4 +28,5 @@ Route::prefix('todo')
         Route::get('/', [TodoController::class, 'search']);
         Route::get('/{id}', [TodoController::class, 'find']);
         Route::patch('/{id}', [TodoController::class, 'update']);
+        Route::delete('/', [TodoController::class, 'delete']);
     });

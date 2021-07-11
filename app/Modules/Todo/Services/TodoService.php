@@ -81,4 +81,17 @@ class TodoService
         $this->todoRepository
             ->update($id, $attributes);
     }
+
+    public function delete(array $ids): void
+    {
+        $todoList = $this->todoRepository
+            ->getByIds($ids);
+        $this->todoRepository
+            ->delete($ids);
+
+        foreach ($todoList as $todo) {
+            Storage::disk('public')
+                ->delete($todo['attachment_path']);
+        }
+    }
 }

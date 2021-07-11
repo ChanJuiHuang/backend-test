@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TodoCreateRequest;
+use App\Http\Requests\TodoDeleteRequest;
 use App\Http\Requests\TodoSearchRequest;
 use App\Http\Requests\TodoUpdateRequest;
 use App\Modules\Todo\Services\TodoService;
@@ -52,5 +53,11 @@ class TodoController extends Controller
     {
         $this->todoService
             ->update($id, $request->validated());
+    }
+
+    public function delete(TodoDeleteRequest $request)
+    {
+        $this->todoService
+            ->delete($request->validated()['ids']);
     }
 }

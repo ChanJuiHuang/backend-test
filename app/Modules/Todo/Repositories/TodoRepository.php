@@ -41,4 +41,16 @@ class TodoRepository
             ->fill($attributes)
             ->save();
     }
+
+    public function delete(array $ids): int
+    {
+        return Todo::whereIn('id', $ids)
+            ->delete();
+    }
+
+    public function getByIds(array $ids): Collection
+    {
+        return Todo::whereIn('id', $ids)
+            ->get();
+    }
 }
