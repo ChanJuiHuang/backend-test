@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TodoController;
 use App\Http\Controllers\TokenController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post('accessToken', [TokenController::class, 'createAccessToken']);
+
+Route::prefix('todo')
+    ->group(function () {
+        Route::post('/', [TodoController::class, 'create']);
+    });
