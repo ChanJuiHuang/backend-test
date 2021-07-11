@@ -26,4 +26,5 @@ Route::prefix('todo')
     ->group(function () {
         Route::post('/', [TodoController::class, 'create']);
         Route::get('/', [TodoController::class, 'search']);
+        Route::get('/{id}', [TodoController::class, 'find']);
     });

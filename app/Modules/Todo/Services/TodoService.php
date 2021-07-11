@@ -2,6 +2,7 @@
 
 namespace App\Modules\Todo\Services;
 
+use App\Modules\Todo\Models\Todo;
 use App\Modules\Todo\Repositories\TodoRepository;
 use Illuminate\Support\Facades\Storage;
 
@@ -54,5 +55,14 @@ class TodoService
             'number_per_page' => $numberPerPage,
             'total' => $total,
         ];
+    }
+
+    public function find(int $id): Todo
+    {
+        $todoList = $this->todoRepository
+            ->find($id);
+        $todoList = $this->getAttachmentUrl()($todoList);
+
+        return $todoList;
     }
 }

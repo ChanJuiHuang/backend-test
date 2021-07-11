@@ -29,4 +29,9 @@ class TodoRepository
             ->limit($numberPerPage)
             ->get();
     }
+
+    public function find(int $id): Todo
+    {
+        return Todo::find($id);
+    }
 }

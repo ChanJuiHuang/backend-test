@@ -40,4 +40,10 @@ class TodoController extends Controller
                 $numberPerPage
             );
     }
+
+    public function find(int $id)
+    {
+        return $this->todoService
+            ->find($id);
+    }
 }
