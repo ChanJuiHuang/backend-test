@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\TodoCreateRequest;
 use App\Http\Requests\TodoDeleteRequest;
 use App\Http\Requests\TodoSearchRequest;
@@ -16,6 +15,11 @@ class TodoController extends Controller
     public function __construct(
         TodoService $todoService
     ) {
+        $this->middleware('accessTokenChecker')
+            ->except([
+                'search',
+                'find',
+            ]);
         $this->todoService = $todoService;
     }
 
