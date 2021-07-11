@@ -27,4 +27,5 @@ Route::prefix('todo')
         Route::post('/', [TodoController::class, 'create']);
         Route::get('/', [TodoController::class, 'search']);
         Route::get('/{id}', [TodoController::class, 'find']);
+        Route::patch('/{id}', [TodoController::class, 'update']);
     });

@@ -65,4 +65,20 @@ class TodoService
 
         return $todoList;
     }
+
+    public function update(int $id, array $attributes): void
+    {
+        $todoList = $this->todoRepository
+            ->find($id);
+        $oldAttachmentPath = $todoList['attachment_path'];
+
+        if (isset($attributes['attachment'])) {
+            Storage::disk('public')
+                ->delete($oldAttachmentPath);
+            $attributes['attachment_path'] = $attributes['attachment']
+                ->store('attachments', 'public');
+        }
+        $this->todoRepository
+            ->update($id, $attributes);
+    }
 }

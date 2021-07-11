@@ -34,4 +34,11 @@ class TodoRepository
     {
         return Todo::find($id);
     }
+
+    public function update(int $id, array $attributes): int
+    {
+        return Todo::find($id)
+            ->fill($attributes)
+            ->save();
+    }
 }

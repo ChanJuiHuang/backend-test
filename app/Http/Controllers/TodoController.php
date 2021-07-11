@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TodoCreateRequest;
 use App\Http\Requests\TodoSearchRequest;
+use App\Http\Requests\TodoUpdateRequest;
 use App\Modules\Todo\Services\TodoService;
 
 class TodoController extends Controller
@@ -45,5 +46,11 @@ class TodoController extends Controller
     {
         return $this->todoService
             ->find($id);
+    }
+
+    public function update(TodoUpdateRequest $request, int $id)
+    {
+        $this->todoService
+            ->update($id, $request->validated());
     }
 }
